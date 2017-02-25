@@ -88,24 +88,23 @@
 
 
 <meta name="description" content="概览
-git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。
-Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？
-事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后">
+git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由L">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 操作基础手册">
 <meta property="og:url" content="http://yoursite.com/2017/02/25/git-操作基础手册/index.html">
 <meta property="og:site_name" content="yeran blog">
 <meta property="og:description" content="概览
-git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。
-Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？
-事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后">
-<meta property="og:updated_time" content="2017-02-25T07:10:05.664Z">
+git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由L">
+<meta property="og:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_%E4%B8%BB%E5%88%86%E7%A4%BA%E6%84%8F.png">
+<meta property="og:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_add.png">
+<meta property="og:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_commit.png">
+<meta property="og:updated_time" content="2017-02-25T08:41:50.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 操作基础手册">
 <meta name="twitter:description" content="概览
-git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。
-Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？
-事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后">
+git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由L">
+<meta name="twitter:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_%E4%B8%BB%E5%88%86%E7%A4%BA%E6%84%8F.png">
 
 
 
@@ -374,17 +373,61 @@ Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者�
 
       
         <p><a href="http://7xovkg.com1.z0.glb.clouddn.com/2010072023345292.png" target="_blank" rel="external">概览</a></p>
-<h2 id="git概述"><a href="#git概述" class="headerlink" title="git概述"></a>git概述</h2><h3 id="git-来源"><a href="#git-来源" class="headerlink" title="git 来源"></a>git 来源</h3><p>很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。</p>
-<p>Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？</p>
-<p>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！</p>
-<p>你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。</p>
-<p>不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p>
-<p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。</p>
-<p>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：</p>
-<p>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。</p>
-<p>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</p>
-<p>历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。</p>
-<h3 id="集中式与分布式"><a href="#集中式与分布式" class="headerlink" title="集中式与分布式"></a>集中式与分布式</h3><p>集中式：（由中央服务器统一进行版本管理、控制，不允许多C端的各自代码交互）<br>集中式版本控制系统，版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。<br>集中式版本控制系统最大的毛病就是必须联网才能工作。<br>分布式：<br>分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。既然每个人电脑上都有一个完整的版本库，那多个人如何协作呢？比方说你在自己电脑上改了文件A，你的同事也在他的电脑上改了文件A，这时，你们俩之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。<br>和集中式版本控制系统相比，分布式版本控制系统的安全性要高很多，因为每个人电脑里都有完整的版本库，某一个人的电脑坏掉了不要紧，随便从其他人那里复制一个就可以了。而集中式版本控制系统的中央服务器要是出了问题，所有人都没法干活了。</p>
+<h2 id="git概述"><a href="#git概述" class="headerlink" title="git概述"></a>git概述</h2><h3 id="git-来源"><a href="#git-来源" class="headerlink" title="git 来源"></a>git 来源</h3><p>很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。<br>Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？<br>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！<br>你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。<br>不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p>
+<p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。<br>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：<br>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。<br>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。<br>历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。</p>
+<a id="more"></a>
+<h3 id="集中式与分布式"><a href="#集中式与分布式" class="headerlink" title="集中式与分布式"></a>集中式与分布式</h3><p>集中式：（由中央服务器统一进行版本管理、控制，不允许多C端的各自代码交互）<br>集中式版本控制系统，版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。<br>集中式版本控制系统最大的毛病就是必须联网才能工作。<br>分布式：（每个C都有一个独立的仓库）<br>分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。既然每个人电脑上都有一个完整的版本库，那多个人如何协作呢？比方说你在自己电脑上改了文件A，你的同事也在他的电脑上改了文件A，这时，你们俩之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。<br>和集中式版本控制系统相比，分布式版本控制系统的安全性要高很多，因为每个人电脑里都有完整的版本库，某一个人的电脑坏掉了不要紧，随便从其他人那里复制一个就可以了。而集中式版本控制系统的中央服务器要是出了问题，所有人都没法干活了。<br>那github、coding、码云这些干嘛用？仅仅是用来方便“交换”大家的修改，以及图形化界面方便查看所有的分支版本。</p>
+<h3 id="git-优势"><a href="#git-优势" class="headerlink" title="git 优势"></a>git 优势</h3><ul>
+<li>分布式</li>
+<li>分支管理</li>
+</ul>
+<h2 id="git-仓库"><a href="#git-仓库" class="headerlink" title="git 仓库"></a>git 仓库</h2><p><img src="http://7xovkg.com1.z0.glb.clouddn.com/git_%E4%B8%BB%E5%88%86%E7%A4%BA%E6%84%8F.png" alt=""></p>
+<ul>
+<li>中央仓库（coding、github）</li>
+<li>分布式仓库（独立的主机）</li>
+</ul>
+<p>仓库（版本库），英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
+<h2 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h2><h3 id="仓库初始化"><a href="#仓库初始化" class="headerlink" title="仓库初始化"></a>仓库初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+<p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository），细心的读者可以发现当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init --bare</div></pre></td></tr></table></figure>
+<p>这个是创建一个裸库，裸库是不允许在里面直接进行代码编写的。里面只包括.git目录下面的文件，而不会包含实际项目源文件的拷贝，所以该版本库不能作为工作目录(working tree)。<br>主要是在中央服务器进行创建裸库，目的是为了避免中央服务器直接编辑的分支代码和多个远程代码的分支提交产生冲突。</p>
+<h3 id="git-仓库管理结构"><a href="#git-仓库管理结构" class="headerlink" title="git 仓库管理结构"></a>git 仓库管理结构</h3><p><img src="http://7xovkg.com1.z0.glb.clouddn.com/git_%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%93%E6%9E%84.png" alt=""></p>
+<blockquote>
+<p>HEAD: 索引，指向当前开发分支</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ref: refs/heads/master</div></pre></td></tr></table></figure>
+<blockquote>
+<p>objects：包含了项目中的所有对象（这些对象主要是commit对象和tree对象（目录树））</p>
+</blockquote>
+<p>对象都有一个40位的id，前两位作为目录名，后38位作为文件名</p>
+<blockquote>
+<p>index是一个索引文件。</p>
+</blockquote>
+<p>存放的是暂存区的整个目录树的信息，并且为目录树中的每个文件都保存了时间戳和长度。<br>当git add 将某个文件添加到暂存区的时候，index文件中添加了这个文件的基本信息。<br>当我们修改了工作区的某个文件（比如用touch config.js修改时间戳信息)，这会导致该文件的时间戳发生变化，而index里面存放的仍然是旧的信息。</p>
+<blockquote>
+<p>refs 目录称为引用目录</p>
+</blockquote>
+<p>引用就是一个文件，里面包含了一个commit id。.git/refs保存了所有的引用。<br>.git/refs/heads目录下保存的是分支引用，比如./git/refs/heads/master文件就是master分支的引用。<br>.git/refs/tags目录保存了tag引用。</p>
+<blockquote>
+<p>hooks </p>
+</blockquote>
+<p>钩子文件目录</p>
+<blockquote>
+<p>git add /git commit</p>
+</blockquote>
+<p>git add命令会做两件事情：<br>a.添加文件到暂存区(.git/objects)<br>b.添加文件索引到(.git/index)</p>
+<p>当git commit被成功执行后，会产生一系列对象表示该commit的结果，都存储在.git/objects目录下。主要分成三部分：<br>a.tree对象表示当前commit时候的暂存区的目录树，tree对象的内容来自于.git/index文件。<br>b.blob对象<br>tree对象目录树中的文件总是以blob的对象被保存。如果tree中有三个文件，那么就有对应的三个blob对象，它们都能通过tree对象保存的这些blob对象的摘要信息（id,文件名，类型等）找到<br>c.commit对象<br>该对象记录了属于哪个tree对象，上一次commit的对象id,自己的id,作者等等。</p>
+<p><img src="http://7xovkg.com1.z0.glb.clouddn.com/git_add.png" alt=""><br><img src="http://7xovkg.com1.z0.glb.clouddn.com/git_commit.png" alt=""></p>
+<h3 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h3><ul>
+<li><p>大版本回退</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git log （回到过去）</div><div class="line">git reflog (回到未来)</div><div class="line">git log	--pretty=oneline</div><div class="line">git reset --hard commit_id</div></pre></td></tr></table></figure>
+</li>
+<li><p>单文件回退<br>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -- file (git checkout其实是用版本库里的版本替换工作区的版本)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">第一步用命令</div><div class="line">	git reset HEAD file(git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区)，就回到了场景1，</div><div class="line">第二步按场景1操作。</div></pre></td></tr></table></figure></p>
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
 
       
     </div>
@@ -561,7 +604,7 @@ Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git概述"><span class="nav-number">1.</span> <span class="nav-text">git概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-来源"><span class="nav-number">1.1.</span> <span class="nav-text">git 来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集中式与分布式"><span class="nav-number">1.2.</span> <span class="nav-text">集中式与分布式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git概述"><span class="nav-number">1.</span> <span class="nav-text">git概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-来源"><span class="nav-number">1.1.</span> <span class="nav-text">git 来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集中式与分布式"><span class="nav-number">1.2.</span> <span class="nav-text">集中式与分布式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-优势"><span class="nav-number">1.3.</span> <span class="nav-text">git 优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-仓库"><span class="nav-number">2.</span> <span class="nav-text">git 仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-常用命令"><span class="nav-number">3.</span> <span class="nav-text">git 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库初始化"><span class="nav-number">3.1.</span> <span class="nav-text">仓库初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-仓库管理结构"><span class="nav-number">3.2.</span> <span class="nav-text">git 仓库管理结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本管理"><span class="nav-number">3.3.</span> <span class="nav-text">版本管理</span></a></li></ol></li></ol></div>
             
 
           </div>
