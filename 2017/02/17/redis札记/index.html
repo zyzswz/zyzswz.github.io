@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="redis" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="redis基础知识Redis是一个开源的使用ANSI/C言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。Redis是一个开源，高级的键值存储和一个适用的解决方案，用于构建高性能，可扩展的Web应用程序。
+特点1、和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(so">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis札记">
+<meta property="og:url" content="http://yoursite.com/2017/02/17/redis札记/index.html">
+<meta property="og:site_name" content="yeran blog">
+<meta property="og:description" content="redis基础知识Redis是一个开源的使用ANSI/C言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。Redis是一个开源，高级的键值存储和一个适用的解决方案，用于构建高性能，可扩展的Web应用程序。
+特点1、和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(so">
+<meta property="og:updated_time" content="2017-02-23T14:28:38.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis札记">
+<meta name="twitter:description" content="redis基础知识Redis是一个开源的使用ANSI/C言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。Redis是一个开源，高级的键值存储和一个适用的解决方案，用于构建高性能，可扩展的Web应用程序。
+特点1、和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(so">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/17/redis札记/"/>
+
+
+
+
+
+  <title> redis札记 | yeran blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">yeran blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-loves">
+          <a href="/loves" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            menu.loves
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/17/redis札记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="yeran">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="yeran blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="yeran blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                redis札记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-17T19:10:25+08:00">
+                2017-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/loves/" itemprop="url" rel="index">
+                    <span itemprop="name">loves</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/17/redis札记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/17/redis札记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="redis基础知识"><a href="#redis基础知识" class="headerlink" title="redis基础知识"></a><a href="http://www.redis.cn/topics/protocol.html" target="_blank" rel="external">redis基础知识</a></h2><p>Redis是一个开源的使用ANSI/C言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。<br>Redis是一个开源，高级的键值存储和一个适用的解决方案，用于构建高性能，可扩展的Web应用程序。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>1、和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。</p>
+<a id="more"></a>
+<p>2、Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器。这使得Redis可执行单层树复制。存盘可以有意无意的对数据进行写操作。由于完全实现了发布/订阅机制，使得从数据库在任何地方同步树时，可订阅一个频道并接收主服务器完整的消息发布记录。同步对读取操作的可扩展性和数据冗余很有帮助。</p>
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>Redis的外围由一个键、值映射的字典构成。与其他非关系型数据库主要不同在于：Redis中值的类型[1]  不仅限于字符串，还支持如下抽象数据类型：<br>字符串列表<br>无序不重复的字符串集合<br>有序不重复的字符串集合<br>键、值都为字符串的哈希表[1]<br>值的类型决定了值本身支持的操作。Redis支持不同无序、有序的列表，无序、有序的集合间的交集、并集等高级服务器端原子操作。</p>
+<h3 id="redis-网络层"><a href="#redis-网络层" class="headerlink" title="redis 网络层"></a>redis 网络层</h3><p>1、redis 的默认端口号是6379<br>6379在是手机按键上MERZ对应的号码，而MERZ取自意大利歌女Alessia Merz的名字。MERZ长期以来被antirez及其朋友当作愚蠢的代名词。</p>
+<p>2、TCP连接：客户端连接到来时，Redis服务器为此创建一个TCP连接。在客户端与服务器端之间传输的每个Redis命令或者数据都以\r\n结尾。</p>
+<p>3、新的统一请求协议<br>新的统一协议Redis1.2中引入，但是Redis2.0中，这就成为了Redus服务通讯的标准方式。在统一协议里，发送给Redis服务端的所有参数都是二进制安全的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">*&lt;number of arguments&gt; CR LF</div><div class="line">$&lt;number of bytes of argument 1&gt; CR LF</div><div class="line">&lt;argument data&gt; CR LF</div><div class="line">...</div><div class="line">$&lt;number of bytes of argument N&gt; CR LF</div><div class="line">&lt;argument data&gt; CR LF</div></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*3\r\n$3\r\nSET\r\n$5\r\nmykey\r\n$7\r\nmyvalue\r\n</div></pre></td></tr></table></figure></p>
+<p>在Redis的回复中也使用这样的格式。批量回复时，这种格式用于每个参数$6\r\nmydata\r\n。 实际的统一请求协议是Redis用于返回列表项，并调用 Multi-bulk回复。 仅仅是N个以以*\r\n为前缀的不同批量回复，是紧随的参数（批量回复）数目。</p>
+<h3 id="回复"><a href="#回复" class="headerlink" title="回复"></a>回复</h3><p>Redis用不同的回复类型回复命令。它可能从服务器发送的第一个字节开始校验回复类型：</p>
+<ul>
+<li>用单行回复，回复的第一个字节将是“+”</li>
+<li>错误消息，回复的第一个字节将是“-”</li>
+<li>整型数字，回复的第一个字节将是“:”</li>
+<li>批量回复，回复的第一个字节将是“$”</li>
+<li>多个批量回复，回复的第一个字节将是“*”</li>
+</ul>
+<p>Simple Strings<br>状态回复（或者单行回复）以“+”开始以“\r\n”结尾的单行字符串形式。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;+OK\r\n&quot;</div></pre></td></tr></table></figure></p>
+<p>客户端库将在“+”后面返回所有数据，正如上例中字符串“OK”一样。</p>
+<p>Errors<br>错误回复发送类似于状态回复。唯一的不同是第一个字节用“-”代替“+”。<br>错误回复仅仅在一些意料之外的事情发生时发送，例如：如果你试图执行一个操作来应付错误的数据类型，或者如果命令不存在等等。所以当收到一个错误回复时，客户端将会出现一个异常。</p>
+<p>Integers<br>这种回复类型只是用CRLF结尾字符串来表示整型，用一个字节的“：”作为前缀。例如：“：0\r\n”，或者“:1000\r\n”是整型回复。<br>像INCR或者LASTAVE命令用整型回复作为实际回复值，此时对于返回的整型没有特殊的意思。它仅仅是为INCR、LASTSAVE的UNIX时间等增加数值。<br>一些命令像EXISTS将为true返回1，为false返回0。<br>其它命令像SADD、SREM和SETNX如果操作实际完成了的话将返回1，否则返回0。<br>接下来的命令将回复一个整型回复：SETNX、DEL、EXISTS、INCR、INCRBY、DECR、DECRBY、DBSIZE、LASTSAVE、RENAMENX、MOVE、LLEN、SADD、SREM、SISMEMBER、SCARD。</p>
+<p>Bulk Strings<br>批量回复被服务器用于返回一个单二进制安全字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C: GET mykey</div><div class="line">S: $6\r\nfoobar\r\n</div></pre></td></tr></table></figure></p>
+<p>服务器发送第一行回复，该行以“$”开始后面跟随实际要发送的字节数，随后是CRLF，然后发送实际数据，随后是2个字节的额外数据用于最后的CRLF。服务器发送的准确序列如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;$6\r\nfoobar\r\n&quot;</div></pre></td></tr></table></figure></p>
+<p>如果请求的值不存在，批量回复将使用特殊的值-1来作为数据长度，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C: GET nonexistingkey</div><div class="line">S: $-1</div></pre></td></tr></table></figure></p>
+<p>当请求的对象不存在时，客户端库API不会返回空字符串，而会返回空对象。例如：Ruby库返回‘nil’，而C库返回NULL（或者在回复的对象里设置指定的标志）等等。</p>
+<p>Arrays<br>像命令LRNGE需要返回多个值（列表的每个元素是一个值，而LRANGE需要返回多于一个单元素）。使用多批量写是有技巧的，用一个初始行作为前缀来指示多少个批量写紧随其后。批量回复的第一个字节总是*，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">C: LRANGE mylist 0 3</div><div class="line">s: *4</div><div class="line">s: $3</div><div class="line">s: foo</div><div class="line">s: $3</div><div class="line">s: bar</div><div class="line">s: $5</div><div class="line">s: Hello</div><div class="line">s: $5</div><div class="line">s: World</div></pre></td></tr></table></figure></p>
+<p>正如您可以看到的多批量回复是以完全相同的格式使用Redis统一协议将命令发送给服务器。<br>服务器发送的第一行是*4\r\n，用于指定紧随着4个批量回复。然后传送每个批量写。<br>如果指定的键不存在，则该键被认为是持有一个空的列表，且数值0被当作多批量计数值来发送，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C: LRANGE nokey 0 1</div><div class="line">S: *0</div></pre></td></tr></table></figure></p>
+<p>当BLPOP命令超时时，它返回nil多批量回复。这种类型多批量回复的计数器是-1，且值被当作nil来解释。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C: BLPOP key 1</div><div class="line">S: *-1</div></pre></td></tr></table></figure></p>
+<p>当这种情况发生时，客户端库API将返回空nil对象，且不是一个空列表。这必须有别于空列表和错误条件（例如：BLPOP命令的超时条件）。<br>多批量回复中的Nil元素<br>多批量回复的单元素长度可能是-1，为了发出信号这个元素被丢失且不是空字符串。这种情况发送在SORT命令时，此时使用GET模式选项且指定的键丢失。一个多批量回复包含一个空元素的例子如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">S: *3</div><div class="line">S: $3</div><div class="line">S: foo</div><div class="line">S: $-1</div><div class="line">S: $3</div><div class="line">S: bar</div></pre></td></tr></table></figure></p>
+<p>第二个元素是空。客户端库返回如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&quot;foo&quot;,nil,&quot;bar&quot;]</div></pre></td></tr></table></figure></p>
+<p>多命令和管道<br>客户端能使用同样条件为了发出多个命令。管道用于支持多命令能够被客户端用单写操作来发送，它不需要为了发送下一条命令而读取服务器的回复。所有回复都能在最后被读出。<br>通常Redis服务器和客户端拥有非常快速的连接，所以在客户端的实现中支持这个特性不是那么重要，如果一个应用需要在短时间内发出大量的命令，管道仍然会非常快。</p>
+<p>旧协议发送命令<br>在统一请求协议出现前，Redis用不同的协议发送命令，现在仍然支持，它简单通过手动telnet。在这种协议中，有两种类型的命令：<br>内联命令：简单命令其参数用空格分割字符串。非二进制安全。<br>批量命令：批量命令准确如内联命令，但是最后的参数用特殊方式来处理用于保证最后参数二进制安全。 内联命令<br>最简单的发送Redis命令的方式是通过内联命令。下面是一个使用内联命令聊天的服务器/客户端的例子（服务器聊天用S:开始，客户端聊天用C:开始）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">C: PING</div><div class="line">S: +PONG</div><div class="line">`</div></pre></td></tr></table></figure></p>
+<p>下面是另外一个内联命令返回整数的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C: EXISTS somekey</div><div class="line">S: :0</div></pre></td></tr></table></figure></p>
+<p>因为‘somekey’不存在，所以服务器返回‘:0’。<br>注意：EXISTS命令带有一个参数。参数用空格分割。<br>批量命令<br>一些命令当用内联命令发送时需要一种特殊的格式用于支持最后参数二进制安全。这种命令用最后参数作为“字节计数器”，然后发送批量数据（因为服务器知道读取多少个字节，所以是二进制安全的）。<br>请看下面的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">C: SET mykey 6</div><div class="line">C: foobar</div><div class="line">S: +OK</div></pre></td></tr></table></figure></p>
+<p>这条命令的最后一个参数是‘6’。这用于指定随后数据的字节数，即字符串“foobar”。注意：虽然这个字节流是以额外的两个CRLF字节结尾的。<br>所有批量命令都是用这种准确的格式：用随后数据的字节数代替最后一个参数，紧跟着后面是组成参数本身的字节和CRLF。为了更清楚程序，下面是通过客户端发送字符串的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&quot;SET mykey 6\r\nfoobar\r\n&quot;</div></pre></td></tr></table></figure></p>
+<p>Redis有一个内部列表，用于表示哪些命令是内联，哪些命令是批量，所以你不得不发送相应的命令。强烈建议使用新的统一请求协议来代替老的协议。</p>
+<hr>
+<!--more-->
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/loves/" rel="tag"># loves</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/08/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/23/reids-FAQ/" rel="prev" title="reids FAQ">
+                reids FAQ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="yeran" />
+          <p class="site-author-name" itemprop="name">yeran</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis基础知识"><span class="nav-number">1.</span> <span class="nav-text">redis基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型"><span class="nav-number">1.2.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis-网络层"><span class="nav-number">1.3.</span> <span class="nav-text">redis 网络层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回复"><span class="nav-number">1.4.</span> <span class="nav-text">回复</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yeran</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yeran';
+      var disqus_identifier = '2017/02/17/redis札记/';
+
+      var disqus_title = "redis札记";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
