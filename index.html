@@ -366,20 +366,27 @@
 
       
         
-          
-            <h2 id="git指令详解"><a href="#git指令详解" class="headerlink" title="git指令详解"></a>git指令详解</h2><h3 id="git-基础命令"><a href="#git-基础命令" class="headerlink" title="git 基础命令"></a>git 基础命令</h3><h4 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h4><h5 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://git.coding.net/zyzs/wiscommun.git</div></pre></td></tr></table></figure>
+          <h2 id="git指令详解"><a href="#git指令详解" class="headerlink" title="git指令详解"></a>git指令详解</h2><h3 id="git-基础命令"><a href="#git-基础命令" class="headerlink" title="git 基础命令"></a>git 基础命令</h3><h4 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h4><h5 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://git.coding.net/zyzs/wiscommun.git</div></pre></td></tr></table></figure>
 <h5 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
-<h5 id="关联远程仓库-1"><a href="#关联远程仓库-1" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin &apos;yeran@ip/path&apos;</div></pre></td></tr></table></figure>
-<h4 id="查看本地分支和远程分支"><a href="#查看本地分支和远程分支" class="headerlink" title="查看本地分支和远程分支"></a>查看本地分支和远程分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
-<p>红色为远程分支，绿色为本地分支，HEAD指向的是当前分支</p>
-<h4 id="执行代码编写"><a href="#执行代码编写" class="headerlink" title="执行代码编写"></a>执行代码编写</h4><h5 id="代码块，方法体编写"><a href="#代码块，方法体编写" class="headerlink" title="代码块，方法体编写"></a>代码块，方法体编写</h5><h5 id="代码块，方法体测试"><a href="#代码块，方法体测试" class="headerlink" title="代码块，方法体测试"></a>代码块，方法体测试</h5><h4 id="执行代码小步提交"><a href="#执行代码小步提交" class="headerlink" title="执行代码小步提交"></a>执行代码小步提交</h4><h5 id="添加新增代码文件到缓冲区"><a href="#添加新增代码文件到缓冲区" class="headerlink" title="添加新增代码文件到缓冲区"></a>添加新增代码文件到缓冲区</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//小步提交（推荐）</div><div class="line">git add aa.php</div><div class="line">git add bb.html</div><div class="line"></div><div class="line">//不推荐</div><div class="line">git add .</div><div class="line">git add *.php</div></pre></td></tr></table></figure>
-<h5 id="确认无误提交本次更改到本地仓库"><a href="#确认无误提交本次更改到本地仓库" class="headerlink" title="确认无误提交本次更改到本地仓库"></a>确认无误提交本次更改到本地仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &apos;提交内容 提交版本 提交人 提交时间&apos;</div></pre></td></tr></table></figure>
-<h5 id="如果发现本次修改有问题"><a href="#如果发现本次修改有问题" class="headerlink" title="如果发现本次修改有问题"></a>如果发现本次修改有问题</h5><p>撤销修改（还未执行add 操作），还原仓库中之前的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//推荐</div><div class="line">git checkout head aa.php</div><div class="line">git checkout head *.php</div><div class="line">//不推荐</div><div class="line">git checkout head (撤销所有修改)</div></pre></td></tr></table></figure></p>
-<p>撤销暂存（取消add操作，还未执行commit）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset head aa.php</div></pre></td></tr></table></figure></p>
-<p>如果说，我们是想还原一份以及被add操作的文件，则先执行插销暂存，然后执行撤销修改</p>
-<p>#### </p>
-
-          
+<h5 id="关联远程仓库-1"><a href="#关联远程仓库-1" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h5><ul>
+<li><p>关联一个远程地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin &apos;yeran@ip/path&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>关联多个远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote set-url --add origin https://github.com/abel533/Mapper.git</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者直接配置.git/config文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[remote &quot;origin&quot;]  </div><div class="line">    url = https://github.com/abel533/Mapper.git  </div><div class="line">    url = https://git.oschina.net/free/Mapper.git</div></pre></td></tr></table></figure></p>
+<p>提交的时候输入:git push all –all</p>
+<h5 id="查看连接信息"><a href="#查看连接信息" class="headerlink" title="查看连接信息"></a>查看连接信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote show origin</div></pre></td></tr></table></figure>
+<h5 id="删除远程连接"><a href="#删除远程连接" class="headerlink" title="删除远程连接"></a>删除远程连接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote rm origin</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/25/git-命令详解/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

@@ -89,26 +89,35 @@
 
 <meta name="description" content="git指令详解git 基础命令关联远程仓库克隆仓库1git clone https://git.coding.net/zyzs/wiscommun.git
 初始化仓库1git init
-关联远程仓库1git remote add origin &amp;apos;yeran@ip/path&amp;apos;
-查看本地分支和远程分支1git branch -a
-红色为远程分支，绿色为本地分支，HEAD指向的是当前">
+关联远程仓库
+关联一个远程地址
+1git remote add origin &amp;apos;yeran@ip/path&amp;apos;
+
+关联多个远程仓库
+1git remote set-url --add origin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 命令详解">
 <meta property="og:url" content="http://yoursite.com/2017/03/25/git-命令详解/index.html">
 <meta property="og:site_name" content="yeran blog">
 <meta property="og:description" content="git指令详解git 基础命令关联远程仓库克隆仓库1git clone https://git.coding.net/zyzs/wiscommun.git
 初始化仓库1git init
-关联远程仓库1git remote add origin &amp;apos;yeran@ip/path&amp;apos;
-查看本地分支和远程分支1git branch -a
-红色为远程分支，绿色为本地分支，HEAD指向的是当前">
-<meta property="og:updated_time" content="2017-03-25T03:09:09.482Z">
+关联远程仓库
+关联一个远程地址
+1git remote add origin &amp;apos;yeran@ip/path&amp;apos;
+
+关联多个远程仓库
+1git remote set-url --add origin">
+<meta property="og:updated_time" content="2017-03-25T05:15:26.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 命令详解">
 <meta name="twitter:description" content="git指令详解git 基础命令关联远程仓库克隆仓库1git clone https://git.coding.net/zyzs/wiscommun.git
 初始化仓库1git init
-关联远程仓库1git remote add origin &amp;apos;yeran@ip/path&amp;apos;
-查看本地分支和远程分支1git branch -a
-红色为远程分支，绿色为本地分支，HEAD指向的是当前">
+关联远程仓库
+关联一个远程地址
+1git remote add origin &amp;apos;yeran@ip/path&amp;apos;
+
+关联多个远程仓库
+1git remote set-url --add origin">
 
 
 
@@ -378,15 +387,119 @@
       
         <h2 id="git指令详解"><a href="#git指令详解" class="headerlink" title="git指令详解"></a>git指令详解</h2><h3 id="git-基础命令"><a href="#git-基础命令" class="headerlink" title="git 基础命令"></a>git 基础命令</h3><h4 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h4><h5 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://git.coding.net/zyzs/wiscommun.git</div></pre></td></tr></table></figure>
 <h5 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
-<h5 id="关联远程仓库-1"><a href="#关联远程仓库-1" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin &apos;yeran@ip/path&apos;</div></pre></td></tr></table></figure>
+<h5 id="关联远程仓库-1"><a href="#关联远程仓库-1" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h5><ul>
+<li><p>关联一个远程地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin &apos;yeran@ip/path&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>关联多个远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote set-url --add origin https://github.com/abel533/Mapper.git</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者直接配置.git/config文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[remote &quot;origin&quot;]  </div><div class="line">    url = https://github.com/abel533/Mapper.git  </div><div class="line">    url = https://git.oschina.net/free/Mapper.git</div></pre></td></tr></table></figure></p>
+<p>提交的时候输入:git push all –all</p>
+<h5 id="查看连接信息"><a href="#查看连接信息" class="headerlink" title="查看连接信息"></a>查看连接信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote show origin</div></pre></td></tr></table></figure>
+<h5 id="删除远程连接"><a href="#删除远程连接" class="headerlink" title="删除远程连接"></a>删除远程连接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote rm origin</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="查看本地分支和远程分支"><a href="#查看本地分支和远程分支" class="headerlink" title="查看本地分支和远程分支"></a>查看本地分支和远程分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
 <p>红色为远程分支，绿色为本地分支，HEAD指向的是当前分支</p>
 <h4 id="执行代码编写"><a href="#执行代码编写" class="headerlink" title="执行代码编写"></a>执行代码编写</h4><h5 id="代码块，方法体编写"><a href="#代码块，方法体编写" class="headerlink" title="代码块，方法体编写"></a>代码块，方法体编写</h5><h5 id="代码块，方法体测试"><a href="#代码块，方法体测试" class="headerlink" title="代码块，方法体测试"></a>代码块，方法体测试</h5><h4 id="执行代码小步提交"><a href="#执行代码小步提交" class="headerlink" title="执行代码小步提交"></a>执行代码小步提交</h4><h5 id="添加新增代码文件到缓冲区"><a href="#添加新增代码文件到缓冲区" class="headerlink" title="添加新增代码文件到缓冲区"></a>添加新增代码文件到缓冲区</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//小步提交（推荐）</div><div class="line">git add aa.php</div><div class="line">git add bb.html</div><div class="line"></div><div class="line">//不推荐</div><div class="line">git add .</div><div class="line">git add *.php</div></pre></td></tr></table></figure>
-<h5 id="确认无误提交本次更改到本地仓库"><a href="#确认无误提交本次更改到本地仓库" class="headerlink" title="确认无误提交本次更改到本地仓库"></a>确认无误提交本次更改到本地仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &apos;提交内容 提交版本 提交人 提交时间&apos;</div></pre></td></tr></table></figure>
-<h5 id="如果发现本次修改有问题"><a href="#如果发现本次修改有问题" class="headerlink" title="如果发现本次修改有问题"></a>如果发现本次修改有问题</h5><p>撤销修改（还未执行add 操作），还原仓库中之前的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//推荐</div><div class="line">git checkout head aa.php</div><div class="line">git checkout head *.php</div><div class="line">//不推荐</div><div class="line">git checkout head (撤销所有修改)</div></pre></td></tr></table></figure></p>
-<p>撤销暂存（取消add操作，还未执行commit）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset head aa.php</div></pre></td></tr></table></figure></p>
+<h5 id="确认无误提交本次更改到本地仓库"><a href="#确认无误提交本次更改到本地仓库" class="headerlink" title="确认无误提交本次更改到本地仓库"></a>确认无误提交本次更改到本地仓库</h5><ul>
+<li><p>单步提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &apos;提交内容 提交版本 提交人 提交时间&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>合并add和commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//推荐</div><div class="line">git commit -m &apos;XX&apos; aa.php</div><div class="line">git commit -m &apos;XX&apos; *.php</div><div class="line">//全部提交（不推荐）</div><div class="line">git commit -m &apos;XX&apos; -a</div></pre></td></tr></table></figure>
+</li>
+<li><p>增补提交（在当前head上进行提交，不会产生新的commitid）<br>相当于是将多次提交分开了操作，实质上是一次真实提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git commit -C head aa.php --amend</div><div class="line">git commit -C head -a --amend</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="如果发现本次修改有问题"><a href="#如果发现本次修改有问题" class="headerlink" title="如果发现本次修改有问题"></a>如果发现本次修改有问题</h5><ul>
+<li><p>撤销修改（还未执行add 操作），还原仓库中之前的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//推荐</div><div class="line">git checkout head aa.php</div><div class="line">git checkout head *.php</div><div class="line">//不推荐</div><div class="line">git checkout head (撤销所有修改)</div></pre></td></tr></table></figure>
+</li>
+<li><p>撤销暂存（取消add操作，还未执行commit）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset head aa.php</div></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>如果说，我们是想还原一份以及被add操作的文件，则先执行插销暂存，然后执行撤销修改</p>
-<p>#### </p>
+<ul>
+<li>撤销提交（commit）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//无痕撤销</div><div class="line">git reset --hard commit_id</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="查询提交记录"><a href="#查询提交记录" class="headerlink" title="查询提交记录"></a>查询提交记录</h4><h5 id="查询提交历史"><a href="#查询提交历史" class="headerlink" title="查询提交历史"></a>查询提交历史</h5><ul>
+<li><p>全面log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://blog.csdn.net/wh_19910525/article/details/7468549" target="_blank" rel="external">自定义log</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log --pretty=oneline -2 -p</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="查询具体某个提交的详细信息"><a href="#查询具体某个提交的详细信息" class="headerlink" title="查询具体某个提交的详细信息"></a>查询具体某个提交的详细信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show commitid</div></pre></td></tr></table></figure>
+<h5 id="查询当前的工作区代码和仓库中的区别"><a href="#查询当前的工作区代码和仓库中的区别" class="headerlink" title="查询当前的工作区代码和仓库中的区别"></a><a href="http://www.cnblogs.com/wish123/p/3963224.html" target="_blank" rel="external">查询当前的工作区代码和仓库中的区别</a></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git diff --stat （简单diff提示，只显示变化行数）</div><div class="line">git diff （暂存区比较）</div><div class="line">git diff origin/master （和分支上最新提交的比较）</div><div class="line">git diff HEAD (和当前分支最新版的比较)</div></pre></td></tr></table></figure>
+<h4 id="强大的分支管理"><a href="#强大的分支管理" class="headerlink" title="强大的分支管理"></a>强大的分支管理</h4><h5 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h5><ul>
+<li><p>新建基于当前分支最新保存的新分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch &lt;branchName&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>切换分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout &lt;branchName&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>新建新分支，并跳转到新分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b &lt;branchName&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h5><ul>
+<li><p>合并并执行提交(合并成功后，会将合并分支中的若干提交都复制过来，比较杂乱)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git merge origin/dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>压合合并（多人开发，先在一个分支上多次提交，然后将多次提交合并成一个提交）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git merge --squash origin/dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>拉取某次提交进行合并<br>单个commitid的合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git cherry-pick &lt;commitid&gt;</div><div class="line">//保留原提交者信息</div><div class="line">git cherry-pick  -x &lt;commitid&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>多个commit的拉取合并<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git cherry-pick &lt;start-commit-id&gt;..&lt;end-commit-id&gt;</div><div class="line">git cherry-pick &lt;start-commit-id&gt;^..&lt;end-commit-id&gt;</div></pre></td></tr></table></figure></p>
+<p>前者表示把<start-commit-id>到<end-commit-id>之间(左开右闭，不包含start-commit-id)的提交cherry-pick到当前分支；<br>后者表示把<start-commit-id>到<end-commit-id>之间(闭区间，包含start-commit-id)的提交cherry-pick到当前分支。</end-commit-id></start-commit-id></end-commit-id></start-commit-id></p>
+<p>其中，<start-commit-id>到<end-commit-id>只需要commit-id的前6位即可，并且<start-commit-id>在时间上必须早于<end-commit-id></end-commit-id></start-commit-id></end-commit-id></start-commit-id></p>
+<h5 id="查看当前状态"><a href="#查看当前状态" class="headerlink" title="查看当前状态"></a>查看当前状态</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+<h5 id="分支重命名"><a href="#分支重命名" class="headerlink" title="分支重命名"></a>分支重命名</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -m/M &lt;oldName&gt; &lt;newName&gt;</div></pre></td></tr></table></figure>
+<p>m：不会覆盖已存在的分支<br>M：允许覆盖</p>
+<h5 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d/D &lt;branchName&gt;</div></pre></td></tr></table></figure>
+<p>d：分支必须经过合并<br>D：强制合并</p>
+<h4 id="标签-TAG（重要）"><a href="#标签-TAG（重要）" class="headerlink" title="标签 TAG（重要）"></a>标签 TAG（重要）</h4><p>人们在发布某个软件版本（比如 v1.0 等等）的时候经常会使用标签。<br>如v1.0，v1.2.1等</p>
+<h5 id="列显已有的标签"><a href="#列显已有的标签" class="headerlink" title="列显已有的标签"></a>列显已有的标签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git tag</div><div class="line">git tag -l &apos;v1.4.2.*&apos;</div></pre></td></tr></table></figure>
+<h5 id="新建标签（标签是无法重命名的，一定注意）"><a href="#新建标签（标签是无法重命名的，一定注意）" class="headerlink" title="新建标签（标签是无法重命名的，一定注意）"></a>新建标签（标签是无法重命名的，一定注意）</h5><p>轻量级的（lightweight）和含附注的（annotated）<br>轻量级标签就像是个不会变化的分支，实际上它就是个指向特定提交对象的引用。而含附注标签，实际上是存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证。一般我们都建议使用含附注型的标签，以便保留相关信息；当然，如果只是临时性加注标签，或者不需要旁注额外信息，用轻量级标签也没问题</p>
+<ul>
+<li><p>含附注的标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag -a v1.4 -m &apos;my version 1.4&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>轻量级标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag v1.4-lw</div></pre></td></tr></table></figure>
+</li>
+<li><p>后期加注标签(为分支增加标签)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag -a v1.2 9fceb02</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="查看相应标签的版本信息"><a href="#查看相应标签的版本信息" class="headerlink" title="查看相应标签的版本信息"></a>查看相应标签的版本信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show v1.4</div></pre></td></tr></table></figure>
+<h5 id="由标签创建一个分支"><a href="#由标签创建一个分支" class="headerlink" title="由标签创建一个分支"></a>由标签创建一个分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch &lt;branchName&gt; &lt;tagName&gt;</div></pre></td></tr></table></figure>
+<h5 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag -d branch &lt;tagName&gt;</div></pre></td></tr></table></figure>
+<h5 id="分享标签-推送到远程仓库"><a href="#分享标签-推送到远程仓库" class="headerlink" title="分享标签(推送到远程仓库)"></a>分享标签(推送到远程仓库)</h5><p>默认情况下，git push 并不会把标签传送到远端服务器上，只有通过显式命令才能分享标签到远端仓库。其命令格式如同推送分支，运行 git push origin [tagname]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git push origin [tagname] </div><div class="line"></div><div class="line">//一次把本地所有tags都推送到远程仓库</div><div class="line">git push origin --tags</div></pre></td></tr></table></figure></p>
+<h4 id="导出版本库"><a href="#导出版本库" class="headerlink" title="导出版本库"></a>导出版本库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git archive --format=zip head&gt;text.zip</div><div class="line">git archive --format zip --output /path/to/file.zip master</div><div class="line"></div><div class="line">//只把目录src和doc建立到归档text.tar中</div><div class="line">git archive --format=zip text.zip HEAD src doc  </div><div class="line"></div><div class="line">//前缀添加</div><div class="line">git archive --format=zip --prefix=1.0/ v1.0 | gzip &gt; test.zip</div></pre></td></tr></table></figure>
+<p>定期进行发送，进行审查/整合</p>
+<ul>
+<li><p>把近期提交的修改过的文件导出到一个zip文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git archive -o ../updated.zip HEAD $(git diff --name-only HEAD^)</div></pre></td></tr></table></figure>
+</li>
+<li><p>出两次提交之间修改过的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git archive -o ../latest.zip NEW_COMMIT_ID_HERE $(git diff --name-only OLD_COMMIT_ID_HERE NEW_COMMIT_ID_HERE)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="远程代码同步和推送"><a href="#远程代码同步和推送" class="headerlink" title="远程代码同步和推送"></a>远程代码同步和推送</h4><h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//拉取但是不合并</div><div class="line">git fetch</div><div class="line"></div><div class="line">//拉取并直接进行合并</div><div class="line">git pull</div></pre></td></tr></table></figure>
+<h5 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure>
+<h4 id="屏蔽一些文件和文件夹"><a href="#屏蔽一些文件和文件夹" class="headerlink" title="屏蔽一些文件和文件夹"></a>屏蔽一些文件和文件夹</h4><p>清空缓存区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm --cached</div></pre></td></tr></table></figure></p>
+<p>更新.gitignore文件<br> .gitignore<br> 这个文件本身会push到库中去。保存的是公共的需要排除的文件。<br>exclude 是自己本地忽略的设置，不会影响到其他人，也不会提交到库中去。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.git/info/exclude</div></pre></td></tr></table></figure></p>
+<h4 id="实际经验"><a href="#实际经验" class="headerlink" title="实际经验"></a>实际经验</h4><p><a href="http://www.cnblogs.com/lhb25/p/10-useful-advanced-git-commands.html" target="_blank" rel="external">实战经验一</a><br><a href="http://www.csdn.net/article/2012-12-11/2812673-12-git-tips" target="_blank" rel="external">实战经验二</a></p>
 
       
     </div>
@@ -563,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git指令详解"><span class="nav-number">1.</span> <span class="nav-text">git指令详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-基础命令"><span class="nav-number">1.1.</span> <span class="nav-text">git 基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关联远程仓库"><span class="nav-number">1.1.1.</span> <span class="nav-text">关联远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#克隆仓库"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">克隆仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#初始化仓库"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">初始化仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关联远程仓库-1"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">关联远程仓库</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看本地分支和远程分支"><span class="nav-number">1.1.2.</span> <span class="nav-text">查看本地分支和远程分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行代码编写"><span class="nav-number">1.1.3.</span> <span class="nav-text">执行代码编写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#代码块，方法体编写"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">代码块，方法体编写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码块，方法体测试"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">代码块，方法体测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行代码小步提交"><span class="nav-number">1.1.4.</span> <span class="nav-text">执行代码小步提交</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加新增代码文件到缓冲区"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">添加新增代码文件到缓冲区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#确认无误提交本次更改到本地仓库"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">确认无误提交本次更改到本地仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果发现本次修改有问题"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">如果发现本次修改有问题</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git指令详解"><span class="nav-number">1.</span> <span class="nav-text">git指令详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-基础命令"><span class="nav-number">1.1.</span> <span class="nav-text">git 基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关联远程仓库"><span class="nav-number">1.1.1.</span> <span class="nav-text">关联远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#克隆仓库"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">克隆仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#初始化仓库"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">初始化仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关联远程仓库-1"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">关联远程仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看连接信息"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">查看连接信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除远程连接"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">删除远程连接</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看本地分支和远程分支"><span class="nav-number">1.1.2.</span> <span class="nav-text">查看本地分支和远程分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行代码编写"><span class="nav-number">1.1.3.</span> <span class="nav-text">执行代码编写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#代码块，方法体编写"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">代码块，方法体编写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码块，方法体测试"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">代码块，方法体测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行代码小步提交"><span class="nav-number">1.1.4.</span> <span class="nav-text">执行代码小步提交</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加新增代码文件到缓冲区"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">添加新增代码文件到缓冲区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#确认无误提交本次更改到本地仓库"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">确认无误提交本次更改到本地仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果发现本次修改有问题"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">如果发现本次修改有问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询提交记录"><span class="nav-number">1.1.5.</span> <span class="nav-text">查询提交记录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查询提交历史"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">查询提交历史</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询具体某个提交的详细信息"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">查询具体某个提交的详细信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询当前的工作区代码和仓库中的区别"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">查询当前的工作区代码和仓库中的区别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强大的分支管理"><span class="nav-number">1.1.6.</span> <span class="nav-text">强大的分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#新建分支"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">新建分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并分支"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">合并分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看当前状态"><span class="nav-number">1.1.6.3.</span> <span class="nav-text">查看当前状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支重命名"><span class="nav-number">1.1.6.4.</span> <span class="nav-text">分支重命名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除分支"><span class="nav-number">1.1.6.5.</span> <span class="nav-text">删除分支</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签-TAG（重要）"><span class="nav-number">1.1.7.</span> <span class="nav-text">标签 TAG（重要）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#列显已有的标签"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">列显已有的标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#新建标签（标签是无法重命名的，一定注意）"><span class="nav-number">1.1.7.2.</span> <span class="nav-text">新建标签（标签是无法重命名的，一定注意）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看相应标签的版本信息"><span class="nav-number">1.1.7.3.</span> <span class="nav-text">查看相应标签的版本信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#由标签创建一个分支"><span class="nav-number">1.1.7.4.</span> <span class="nav-text">由标签创建一个分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除标签"><span class="nav-number">1.1.7.5.</span> <span class="nav-text">删除标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分享标签-推送到远程仓库"><span class="nav-number">1.1.7.6.</span> <span class="nav-text">分享标签(推送到远程仓库)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导出版本库"><span class="nav-number">1.1.8.</span> <span class="nav-text">导出版本库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程代码同步和推送"><span class="nav-number">1.1.9.</span> <span class="nav-text">远程代码同步和推送</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#同步"><span class="nav-number">1.1.9.1.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#推送"><span class="nav-number">1.1.9.2.</span> <span class="nav-text">推送</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#屏蔽一些文件和文件夹"><span class="nav-number">1.1.10.</span> <span class="nav-text">屏蔽一些文件和文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实际经验"><span class="nav-number">1.1.11.</span> <span class="nav-text">实际经验</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
