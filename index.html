@@ -255,6 +255,633 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/git-命令详解/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="yeran">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="yeran blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="yeran blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/25/git-命令详解/" itemprop="url">
+                  git 命令详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T10:24:59+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/loves/" itemprop="url" rel="index">
+                    <span itemprop="name">loves</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/25/git-命令详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/25/git-命令详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="git指令详解"><a href="#git指令详解" class="headerlink" title="git指令详解"></a>git指令详解</h2><h3 id="git-基础命令"><a href="#git-基础命令" class="headerlink" title="git 基础命令"></a>git 基础命令</h3><h4 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h4><h5 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://git.coding.net/zyzs/wiscommun.git</div></pre></td></tr></table></figure>
+<h5 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+<h5 id="关联远程仓库-1"><a href="#关联远程仓库-1" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin &apos;yeran@ip/path&apos;</div></pre></td></tr></table></figure>
+<h4 id="查看本地分支和远程分支"><a href="#查看本地分支和远程分支" class="headerlink" title="查看本地分支和远程分支"></a>查看本地分支和远程分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
+<p>红色为远程分支，绿色为本地分支，HEAD指向的是当前分支</p>
+<h4 id="执行代码编写"><a href="#执行代码编写" class="headerlink" title="执行代码编写"></a>执行代码编写</h4><h5 id="代码块，方法体编写"><a href="#代码块，方法体编写" class="headerlink" title="代码块，方法体编写"></a>代码块，方法体编写</h5><h5 id="代码块，方法体测试"><a href="#代码块，方法体测试" class="headerlink" title="代码块，方法体测试"></a>代码块，方法体测试</h5><h4 id="执行代码小步提交"><a href="#执行代码小步提交" class="headerlink" title="执行代码小步提交"></a>执行代码小步提交</h4><h5 id="添加新增代码文件到缓冲区"><a href="#添加新增代码文件到缓冲区" class="headerlink" title="添加新增代码文件到缓冲区"></a>添加新增代码文件到缓冲区</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//小步提交（推荐）</div><div class="line">git add aa.php</div><div class="line">git add bb.html</div><div class="line"></div><div class="line">//不推荐</div><div class="line">git add .</div><div class="line">git add *.php</div></pre></td></tr></table></figure>
+<h5 id="确认无误提交本次更改到本地仓库"><a href="#确认无误提交本次更改到本地仓库" class="headerlink" title="确认无误提交本次更改到本地仓库"></a>确认无误提交本次更改到本地仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &apos;提交内容 提交版本 提交人 提交时间&apos;</div></pre></td></tr></table></figure>
+<h5 id="如果发现本次修改有问题"><a href="#如果发现本次修改有问题" class="headerlink" title="如果发现本次修改有问题"></a>如果发现本次修改有问题</h5><p>撤销修改（还未执行add 操作），还原仓库中之前的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//推荐</div><div class="line">git checkout head aa.php</div><div class="line">git checkout head *.php</div><div class="line">//不推荐</div><div class="line">git checkout head (撤销所有修改)</div></pre></td></tr></table></figure></p>
+<p>撤销暂存（取消add操作，还未执行commit）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset head aa.php</div></pre></td></tr></table></figure></p>
+<p>如果说，我们是想还原一份以及被add操作的文件，则先执行插销暂存，然后执行撤销修改</p>
+<p>#### </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/rsync-文件同步-（一）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="yeran">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="yeran blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="yeran blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/14/rsync-文件同步-（一）/" itemprop="url">
+                  rsync 文件同步 （一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T16:49:41+08:00">
+                2017-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/14/rsync-文件同步-（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/14/rsync-文件同步-（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>本章主要讲述在linux中的基于rsync的文件同步</p>
+</blockquote>
+<hr>
+<h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><h3 id="rsync简介"><a href="#rsync简介" class="headerlink" title="rsync简介"></a>rsync简介</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/14/rsync-文件同步-（一）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/01/日志（Log）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="yeran">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="yeran blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="yeran blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/01/日志（Log）/" itemprop="url">
+                  日志（Log）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T21:13:31+08:00">
+                2017-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/思考/" itemprop="url" rel="index">
+                    <span itemprop="name">思考</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/01/日志（Log）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/01/日志（Log）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="日志是什么？"><a href="#日志是什么？" class="headerlink" title="日志是什么？"></a>日志是什么？</h3><p>日志即记录，默认不可篡改的对曾经事件的记载。<br>通常意义上的日志对记录形式不做任何，对记录内容也无规范，可以是几笔素绘，也可以是一段文字，当然也可能是一片枯黄的落叶。<br>在常规概念下，任何事情的发生都是有时间标记的，即使我们在记录日志的时候没有作上特殊时间的记录，大自然规则却为它默认附属了历史的印记，虽然我们没有意识到。<br>为了让我们在长远的时间之后依然能够将之前的日志连成一条线，我们需要可以得刻画上我们认识的时间轴线-时间戳。<br>我们可以给日志末尾添加记录，并且可以从左到右读取日志记录。每一条记录都指定了一个唯一的有一定顺序的日志记录编号。<br>日志顺序由“时间”来确定，从图上可以看到日志从右到左的时间顺序，新产生的事件被记录，过去的事件渐渐远去，但它记录了什么时间发生了什么事情，这无论对于计算机、人类、还是整个世界而言，是认知与推理的基础。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/01/日志（Log）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/01/系统重构规划/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="yeran">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="yeran blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="yeran blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/01/系统重构规划/" itemprop="url">
+                  系统重构规划
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T10:50:54+08:00">
+                2017-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/乐豆呀/" itemprop="url" rel="index">
+                    <span itemprop="name">乐豆呀</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/01/系统重构规划/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/01/系统重构规划/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>　　针对目前乐豆呀广告平台的开发过程中遇到的一系列问题以及针对用户量日益增长的趋势，对目前的系统进行第一阶段的优化调整。第一阶段的优化分为几个部分：</p>
+<ul>
+<li>服务器优化：php-fpm参数调优（dynamic，max_spare_servers=40），nginx性能调优</li>
+<li>PHP升级到7.x postgresql升级到9.6</li>
+<li>业务流程优化：包括模块化、业务精简优化、复用优化、资源存储优化</li>
+<li>SQL优化：包括慢查询优化、字段优化、列表查询优化</li>
+<li>数据库优化：包括数据库配置参数调优、数据库整理、数据库分区设计、备份设计等</li>
+<li>缓存优化：整体设计系统中涉及到的各部分模块的缓存需求，构建redis缓存服务，划分业务缓存</li>
+<li>服务器多台负载设计</li>
+<li>日志优化，将错误日志和通用日志分离，进行日志分析和报警处理</li>
+<li>测试规范化<br>　　badboy+jmeter<a href="http://blog.csdn.net/ceo158/article/details/17089635">例子</a><br>　　性能测试<a href="http://wetest.qq.com/">wetest</a></li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/01/系统重构规划/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/25/git-操作基础手册/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1223,7 +1850,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
@@ -1232,7 +1859,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">Kategorien</span>
               
             </div>
@@ -1241,7 +1868,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>

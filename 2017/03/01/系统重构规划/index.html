@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="redis 数据类型" />
+  <meta name="keywords" content="系统重构" />
 
 
 
@@ -87,22 +87,31 @@
 
 
 
-<meta name="description" content="请求/响应协议和RTT
+<meta name="description" content="概述　　针对目前乐豆呀广告平台的开发过程中遇到的一系列问题以及针对用户量日益增长的趋势，对目前的系统进行第一阶段的优化调整。第一阶段的优化分为几个部分：
 
-Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。这意味着通常情况下一个请求会遵循以下步骤：客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。服务端处理命令，并将结果返回给客户端。因此，例如下面是4个命令序列执行情况：Client: INCR XServer: 1Client: INCR XServer: 2C">
+服务器优化：php-fpm参数调优（dynamic，max_spare_servers=40），nginx性能调优
+PHP升级到7.x postgresql升级到9.6
+业务流程优化：包括模块化、业务精简优化、复用优化、资源存储优化
+SQL优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis 请求响应（pipe）">
-<meta property="og:url" content="http://yoursite.com/2017/02/23/redis-请求响应（pipe）/index.html">
+<meta property="og:title" content="系统重构规划">
+<meta property="og:url" content="http://yoursite.com/2017/03/01/系统重构规划/index.html">
 <meta property="og:site_name" content="yeran blog">
-<meta property="og:description" content="请求/响应协议和RTT
+<meta property="og:description" content="概述　　针对目前乐豆呀广告平台的开发过程中遇到的一系列问题以及针对用户量日益增长的趋势，对目前的系统进行第一阶段的优化调整。第一阶段的优化分为几个部分：
 
-Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。这意味着通常情况下一个请求会遵循以下步骤：客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。服务端处理命令，并将结果返回给客户端。因此，例如下面是4个命令序列执行情况：Client: INCR XServer: 1Client: INCR XServer: 2C">
-<meta property="og:updated_time" content="2017-02-23T15:41:39.222Z">
+服务器优化：php-fpm参数调优（dynamic，max_spare_servers=40），nginx性能调优
+PHP升级到7.x postgresql升级到9.6
+业务流程优化：包括模块化、业务精简优化、复用优化、资源存储优化
+SQL优化">
+<meta property="og:updated_time" content="2017-03-14T07:56:18.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis 请求响应（pipe）">
-<meta name="twitter:description" content="请求/响应协议和RTT
+<meta name="twitter:title" content="系统重构规划">
+<meta name="twitter:description" content="概述　　针对目前乐豆呀广告平台的开发过程中遇到的一系列问题以及针对用户量日益增长的趋势，对目前的系统进行第一阶段的优化调整。第一阶段的优化分为几个部分：
 
-Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。这意味着通常情况下一个请求会遵循以下步骤：客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。服务端处理命令，并将结果返回给客户端。因此，例如下面是4个命令序列执行情况：Client: INCR XServer: 1Client: INCR XServer: 2C">
+服务器优化：php-fpm参数调优（dynamic，max_spare_servers=40），nginx性能调优
+PHP升级到7.x postgresql升级到9.6
+业务流程优化：包括模块化、业务精简优化、复用优化、资源存储优化
+SQL优化">
 
 
 
@@ -130,13 +139,13 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/23/redis-请求响应（pipe）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/01/系统重构规划/"/>
 
 
 
 
 
-  <title> redis 请求响应（pipe） | yeran blog </title>
+  <title> 系统重构规划 | yeran blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -263,7 +272,7 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/redis-请求响应（pipe）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/01/系统重构规划/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="yeran">
@@ -287,7 +296,7 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
             
             
               
-                redis 请求响应（pipe）
+                系统重构规划
               
             
           </h1>
@@ -302,8 +311,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-23T23:39:50+08:00">
-                2017-02-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T10:50:54+08:00">
+                2017-03-01
               </time>
             
 
@@ -325,8 +334,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/loves/" itemprop="url" rel="index">
-                    <span itemprop="name">loves</span>
+                  <a href="/categories/乐豆呀/" itemprop="url" rel="index">
+                    <span itemprop="name">乐豆呀</span>
                   </a>
                 </span>
 
@@ -343,8 +352,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/23/redis-请求响应（pipe）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/23/redis-请求响应（pipe）/" itemprop="commentCount"></span>
+                <a href="/2017/03/01/系统重构规划/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/01/系统重构规划/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -370,17 +379,40 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
       
 
       
-        <blockquote>
-<p>请求/响应协议和RTT</p>
-</blockquote>
-<p>Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。<br>这意味着通常情况下一个请求会遵循以下步骤：<br>客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。<br>服务端处理命令，并将结果返回给客户端。<br>因此，例如下面是4个命令序列执行情况：<br>Client: INCR X<br>Server: 1<br>Client: INCR X<br>Server: 2<br>Client: INCR X<br>Server: 3<br>Client: INCR X<br>Server: 4<br>客户端和服务器通过网络进行连接。这个连接可以很快（loopback接口）或很慢（建立了一个多次跳转的网络连接）。无论网络延如何延时，数据包总是能从客户端到达服务器，并从服务器返回数据回复客户端。<br>这个时间被称之为 RTT (Round Trip Time - 往返时间). 当客户端需要在一个批处理中执行多次请求时很容易看到这是如何影响性能的（例如添加许多元素到同一个list，或者用很多Keys填充数据库）。例如，如果RTT时间是250毫秒（在一个很慢的连接下），即使服务器每秒能处理100k的请求数，我们每秒最多也只能处理4个请求。<br>如果采用loopback接口，RTT就短得多（比如我的主机ping 127.0.0.1只需要44毫秒），但它任然是一笔很多的开销在一次批量写入操作中。<br>幸运的是有一种方法可以改善这种情况。</p>
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>　　针对目前乐豆呀广告平台的开发过程中遇到的一系列问题以及针对用户量日益增长的趋势，对目前的系统进行第一阶段的优化调整。第一阶段的优化分为几个部分：</p>
+<ul>
+<li>服务器优化：php-fpm参数调优（dynamic，max_spare_servers=40），nginx性能调优</li>
+<li>PHP升级到7.x postgresql升级到9.6</li>
+<li>业务流程优化：包括模块化、业务精简优化、复用优化、资源存储优化</li>
+<li>SQL优化：包括慢查询优化、字段优化、列表查询优化</li>
+<li>数据库优化：包括数据库配置参数调优、数据库整理、数据库分区设计、备份设计等</li>
+<li>缓存优化：整体设计系统中涉及到的各部分模块的缓存需求，构建redis缓存服务，划分业务缓存</li>
+<li>服务器多台负载设计</li>
+<li>日志优化，将错误日志和通用日志分离，进行日志分析和报警处理</li>
+<li>测试规范化<br>　　badboy+jmeter<a href="http://blog.csdn.net/ceo158/article/details/17089635" target="_blank" rel="external">例子</a><br>　　性能测试<a href="http://wetest.qq.com/" target="_blank" rel="external">wetest</a></li>
+</ul>
 <a id="more"></a>
-<h2 id="Redis-管道（Pipelining）"><a href="#Redis-管道（Pipelining）" class="headerlink" title="Redis 管道（Pipelining）"></a>Redis 管道（Pipelining）</h2><p>一次请求/响应服务器能实现处理新的请求即使旧的请求还未被响应。这样就可以将多个命令发送到服务器，而不用等待回复，最后在一个步骤中读取该答复。<br>这就是管道（pipelining），是一种几十年来广泛使用的技术。例如许多POP3协议已经实现支持这个功能，大大加快了从服务器下载新邮件的过程。<br>Redis很早就支持管道（pipelining）技术，因此无论你运行的是什么版本，你都可以使用管道（pipelining）操作Redis。下面是一个使用的例子：<br>$ (printf “PING\r\nPING\r\nPING\r\n”; sleep 1) | nc localhost 6379<br>+PONG<br>+PONG<br>+PONG<br>这一次我们没有为每个命令都花费了RTT开销，而是只用了一个命令的开销时间。<br>非常明确的，用管道顺序操作的第一个例子如下：<br>Client: INCR X<br>Client: INCR X<br>Client: INCR X<br>Client: INCR X<br>Server: 1<br>Server: 2<br>Server: 3<br>Server: 4<br>重要说明: 使用管道发送命令是，服务器将被迫回复一个队列答复，占用很多内存。所以，如果你需要发送大量的命令，最好是把他们按照合理数量分批次的处理，例如10K的命令，读回复，然后再发送另一个10k的命令，等等。这样速度几乎是相同的，但是在回复这10k命令队列需要非常大量的内存用来组织返回数据内容。<br>一些测试<br>下面我们会使用Redis Ruby客户端进行一些使用管道和不使用管道的情况，测试管道技术对速度的提升效果：<br>require ‘rubygems’<br>require ‘redis’</p>
-<p>def bench(descr)<br>    start = Time.now<br>    yield<br>    puts “#{descr} #{Time.now-start} seconds”<br>end</p>
-<p>def without_pipelining<br>    r = Redis.new<br>    10000.times {<br>        r.ping<br>    }<br>end</p>
-<p>def with_pipelining<br>    r = Redis.new<br>    r.pipelined {<br>        10000.times {<br>            r.ping<br>        }<br>    }<br>end</p>
-<p>bench(“without pipelining”) {<br>    without_pipelining<br>}<br>bench(“with pipelining”) {<br>    with_pipelining<br>}<br>从处于局域网中的Mac OS X系统上执行上面这个简单脚本的数据表明，开启了管道操作后，往返时延已经被改善得相当低了：<br>without pipelining 1.185238 seconds<br>with pipelining 0.250783 seconds<br>如你所见，开启管道后，我们的速度效率提升了5倍。</p>
-<h2 id="管道（Pipelining）-VS-脚本（Scripting）"><a href="#管道（Pipelining）-VS-脚本（Scripting）" class="headerlink" title="管道（Pipelining） VS 脚本（Scripting）"></a>管道（Pipelining） VS 脚本（Scripting）</h2><p>大量 pipeline 应用场景可通过 Redis 脚本（Redis 版本 &gt;= 2.6）得到更高效的处理，后者在服务器端执行大量工作。脚本的一大优势是可通过最小的延迟读写数据，让读、计算、写等操作变得非常快（pipeline 在这种情况下不能使用，因为客户端在写命令前需要读命令返回的结果）。<br>应用程序有时可能在 pipeline 中发送 EVAL 或 EVALSHA 命令。Redis 通过 SCRIPT LOAD 命令（保证 EVALSHA 成功被调用）明确支持这种情况。</p>
+<h3 id="服务器优化"><a href="#服务器优化" class="headerlink" title="服务器优化"></a>服务器优化</h3><h4 id="php-fpm性能调优"><a href="#php-fpm性能调优" class="headerlink" title="php-fpm性能调优"></a>php-fpm性能调优</h4><ul>
+<li>设置php-fpm的子进程模式为dynamic</li>
+<li>根据内存分配具体的参数：<br>　　max_spare_servers = 1.5*1024/（20~30）=50  (php-cgi)<br>　　min_spare_servers = 2<br>　　request_terminate_timeout = 30 (参数 max_execution_time 可以设置 PHP 脚本的最大执行时间)<br>　　max_requests　= 256  (每个进程若超过这个数目(跟php进程有一点点关系,关系不大)，就自动杀死)</li>
+<li>调整backlog（等待队列，即已连接但是未accept处理的最大连接数）参数，在这里设置为511，参考QPS进行设置（相等即可），<br><a href="http://www.cnxct.com/something-about-phpfpm-s-backlog/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">tcp backlog</a><br><a href="https://my.oschina.net/kisops/blog/151079" target="_blank" rel="external">多级backlog</a></li>
+</ul>
+<h4 id="nginx性能调优"><a href="#nginx性能调优" class="headerlink" title="nginx性能调优"></a>nginx性能调优</h4><ul>
+<li>gzip压缩（默认对text/html进行压缩，我们需要对js，img等资源都进行压缩处理，虽然会增加cpu开销，但是对带宽起到很好的节流）</li>
+<li>需要增加gzip-static-module模块，对.gz进行缓存（adtest测试无法对static进行编译，可能是缺少依赖）</li>
+<li>nginx升级到最新版，openssl 升级到1.1.0以上，nginx支持http2.0协议，支持https协议</li>
+<li>nginx 高并发配置调优：<br><a href="http://www.linuxyan.com/web-server/240.html" target="_blank" rel="external">内核优化及参数配置</a></li>
+<li>nginx 超时设置，缓冲区优化（针对50x错误）<a href="http://www.tuicool.com/articles/rQnYv2b" target="_blank" rel="external">FastCGI缓冲区配置</a></li>
+</ul>
+<h3 id="日志服务优化"><a href="#日志服务优化" class="headerlink" title="日志服务优化"></a>日志服务优化</h3><h4 id="日志服务"><a href="#日志服务" class="headerlink" title="日志服务"></a>日志服务</h4><ul>
+<li>日志服务严格按照日志级别和业务区分进行格式设定，采用阿里云LOGHUB</li>
+<li>日志报警服务，采用短信+微信消息+邮件 进行消息传递<br>  传递内容包括：<br>  1、报警级别<br>  2、报警自定义内容<br>  3、报警日志内容（上下文）<br>  4、时间</li>
+</ul>
+<h3 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h3><h4 id="postgresql数据库压力测试工具"><a href="#postgresql数据库压力测试工具" class="headerlink" title="postgresql数据库压力测试工具"></a>postgresql数据库压力测试工具</h4><p>pgbench</p>
+<h4 id="数据库参数调整"><a href="#数据库参数调整" class="headerlink" title="数据库参数调整"></a>数据库参数调整</h4><ul>
+<li>最大连接数调整，暂时保持默认100，超级用户预留连接数保留3个</li>
+<li>调整内存关联参数：<br>  1、shared_buffers 数据库服务器内存共享内存缓冲区的使用量。一般是物理内存的20%左右。<h4 id="索引设计"><a href="#索引设计" class="headerlink" title="索引设计"></a>索引设计</h4><h4 id="数据表分区设计"><a href="#数据表分区设计" class="headerlink" title="数据表分区设计"></a>数据表分区设计</h4>#### </li>
+</ul>
 
       
     </div>
@@ -404,7 +436,7 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
       
         <div class="post-tags">
           
-            <a href="/tags/loves/" rel="tag"># loves</a>
+            <a href="/tags/乐豆呀/" rel="tag"># 乐豆呀</a>
           
         </div>
       
@@ -417,8 +449,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/23/redis-数据类型概览/" rel="next" title="redis 数据类型概览">
-                <i class="fa fa-chevron-left"></i> redis 数据类型概览
+              <a href="/2017/02/25/git-操作基础手册/" rel="next" title="git 操作基础手册">
+                <i class="fa fa-chevron-left"></i> git 操作基础手册
               </a>
             
           </div>
@@ -427,8 +459,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/25/git-操作基础手册/" rel="prev" title="git 操作基础手册">
-                git 操作基础手册 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/01/日志（Log）/" rel="prev" title="日志（Log）">
+                日志（Log） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +593,7 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-管道（Pipelining）"><span class="nav-number">1.</span> <span class="nav-text">Redis 管道（Pipelining）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道（Pipelining）-VS-脚本（Scripting）"><span class="nav-number">2.</span> <span class="nav-text">管道（Pipelining） VS 脚本（Scripting）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器优化"><span class="nav-number">2.</span> <span class="nav-text">服务器优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#php-fpm性能调优"><span class="nav-number">2.1.</span> <span class="nav-text">php-fpm性能调优</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nginx性能调优"><span class="nav-number">2.2.</span> <span class="nav-text">nginx性能调优</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志服务优化"><span class="nav-number">3.</span> <span class="nav-text">日志服务优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#日志服务"><span class="nav-number">3.1.</span> <span class="nav-text">日志服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库优化"><span class="nav-number">4.</span> <span class="nav-text">数据库优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#postgresql数据库压力测试工具"><span class="nav-number">4.1.</span> <span class="nav-text">postgresql数据库压力测试工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库参数调整"><span class="nav-number">4.2.</span> <span class="nav-text">数据库参数调整</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引设计"><span class="nav-number">4.3.</span> <span class="nav-text">索引设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据表分区设计"><span class="nav-number">4.4.</span> <span class="nav-text">数据表分区设计</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -686,9 +718,9 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
 
     <script type="text/javascript">
       var disqus_shortname = 'yeran';
-      var disqus_identifier = '2017/02/23/redis-请求响应（pipe）/';
+      var disqus_identifier = '2017/03/01/系统重构规划/';
 
-      var disqus_title = "redis 请求响应（pipe）";
+      var disqus_title = "系统重构规划";
 
 
       function run_disqus_script(disqus_script) {

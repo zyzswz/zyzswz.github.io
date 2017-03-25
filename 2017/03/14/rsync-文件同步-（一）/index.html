@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="redis 数据类型" />
+  <meta name="keywords" content="yeran, study" />
 
 
 
@@ -87,22 +87,25 @@
 
 
 
-<meta name="description" content="请求/响应协议和RTT
+<meta name="description" content="本章主要讲述在linux中的基于rsync的文件同步
 
-Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。这意味着通常情况下一个请求会遵循以下步骤：客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。服务端处理命令，并将结果返回给客户端。因此，例如下面是4个命令序列执行情况：Client: INCR XServer: 1Client: INCR XServer: 2C">
+
+rsyncrsync简介">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis 请求响应（pipe）">
-<meta property="og:url" content="http://yoursite.com/2017/02/23/redis-请求响应（pipe）/index.html">
+<meta property="og:title" content="rsync 文件同步 （一）">
+<meta property="og:url" content="http://yoursite.com/2017/03/14/rsync-文件同步-（一）/index.html">
 <meta property="og:site_name" content="yeran blog">
-<meta property="og:description" content="请求/响应协议和RTT
+<meta property="og:description" content="本章主要讲述在linux中的基于rsync的文件同步
 
-Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。这意味着通常情况下一个请求会遵循以下步骤：客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。服务端处理命令，并将结果返回给客户端。因此，例如下面是4个命令序列执行情况：Client: INCR XServer: 1Client: INCR XServer: 2C">
-<meta property="og:updated_time" content="2017-02-23T15:41:39.222Z">
+
+rsyncrsync简介">
+<meta property="og:updated_time" content="2017-03-14T09:03:49.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis 请求响应（pipe）">
-<meta name="twitter:description" content="请求/响应协议和RTT
+<meta name="twitter:title" content="rsync 文件同步 （一）">
+<meta name="twitter:description" content="本章主要讲述在linux中的基于rsync的文件同步
 
-Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。这意味着通常情况下一个请求会遵循以下步骤：客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。服务端处理命令，并将结果返回给客户端。因此，例如下面是4个命令序列执行情况：Client: INCR XServer: 1Client: INCR XServer: 2C">
+
+rsyncrsync简介">
 
 
 
@@ -130,13 +133,13 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/23/redis-请求响应（pipe）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/14/rsync-文件同步-（一）/"/>
 
 
 
 
 
-  <title> redis 请求响应（pipe） | yeran blog </title>
+  <title> rsync 文件同步 （一） | yeran blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -263,7 +266,7 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/redis-请求响应（pipe）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/rsync-文件同步-（一）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="yeran">
@@ -287,7 +290,7 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
             
             
               
-                redis 请求响应（pipe）
+                rsync 文件同步 （一）
               
             
           </h1>
@@ -302,8 +305,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-23T23:39:50+08:00">
-                2017-02-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T16:49:41+08:00">
+                2017-03-14
               </time>
             
 
@@ -313,28 +316,6 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/loves/" itemprop="url" rel="index">
-                    <span itemprop="name">loves</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -343,8 +324,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/23/redis-请求响应（pipe）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/23/redis-请求响应（pipe）/" itemprop="commentCount"></span>
+                <a href="/2017/03/14/rsync-文件同步-（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/14/rsync-文件同步-（一）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -371,16 +352,31 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
 
       
         <blockquote>
-<p>请求/响应协议和RTT</p>
+<p>本章主要讲述在linux中的基于rsync的文件同步</p>
 </blockquote>
-<p>Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。<br>这意味着通常情况下一个请求会遵循以下步骤：<br>客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。<br>服务端处理命令，并将结果返回给客户端。<br>因此，例如下面是4个命令序列执行情况：<br>Client: INCR X<br>Server: 1<br>Client: INCR X<br>Server: 2<br>Client: INCR X<br>Server: 3<br>Client: INCR X<br>Server: 4<br>客户端和服务器通过网络进行连接。这个连接可以很快（loopback接口）或很慢（建立了一个多次跳转的网络连接）。无论网络延如何延时，数据包总是能从客户端到达服务器，并从服务器返回数据回复客户端。<br>这个时间被称之为 RTT (Round Trip Time - 往返时间). 当客户端需要在一个批处理中执行多次请求时很容易看到这是如何影响性能的（例如添加许多元素到同一个list，或者用很多Keys填充数据库）。例如，如果RTT时间是250毫秒（在一个很慢的连接下），即使服务器每秒能处理100k的请求数，我们每秒最多也只能处理4个请求。<br>如果采用loopback接口，RTT就短得多（比如我的主机ping 127.0.0.1只需要44毫秒），但它任然是一笔很多的开销在一次批量写入操作中。<br>幸运的是有一种方法可以改善这种情况。</p>
-<a id="more"></a>
-<h2 id="Redis-管道（Pipelining）"><a href="#Redis-管道（Pipelining）" class="headerlink" title="Redis 管道（Pipelining）"></a>Redis 管道（Pipelining）</h2><p>一次请求/响应服务器能实现处理新的请求即使旧的请求还未被响应。这样就可以将多个命令发送到服务器，而不用等待回复，最后在一个步骤中读取该答复。<br>这就是管道（pipelining），是一种几十年来广泛使用的技术。例如许多POP3协议已经实现支持这个功能，大大加快了从服务器下载新邮件的过程。<br>Redis很早就支持管道（pipelining）技术，因此无论你运行的是什么版本，你都可以使用管道（pipelining）操作Redis。下面是一个使用的例子：<br>$ (printf “PING\r\nPING\r\nPING\r\n”; sleep 1) | nc localhost 6379<br>+PONG<br>+PONG<br>+PONG<br>这一次我们没有为每个命令都花费了RTT开销，而是只用了一个命令的开销时间。<br>非常明确的，用管道顺序操作的第一个例子如下：<br>Client: INCR X<br>Client: INCR X<br>Client: INCR X<br>Client: INCR X<br>Server: 1<br>Server: 2<br>Server: 3<br>Server: 4<br>重要说明: 使用管道发送命令是，服务器将被迫回复一个队列答复，占用很多内存。所以，如果你需要发送大量的命令，最好是把他们按照合理数量分批次的处理，例如10K的命令，读回复，然后再发送另一个10k的命令，等等。这样速度几乎是相同的，但是在回复这10k命令队列需要非常大量的内存用来组织返回数据内容。<br>一些测试<br>下面我们会使用Redis Ruby客户端进行一些使用管道和不使用管道的情况，测试管道技术对速度的提升效果：<br>require ‘rubygems’<br>require ‘redis’</p>
-<p>def bench(descr)<br>    start = Time.now<br>    yield<br>    puts “#{descr} #{Time.now-start} seconds”<br>end</p>
-<p>def without_pipelining<br>    r = Redis.new<br>    10000.times {<br>        r.ping<br>    }<br>end</p>
-<p>def with_pipelining<br>    r = Redis.new<br>    r.pipelined {<br>        10000.times {<br>            r.ping<br>        }<br>    }<br>end</p>
-<p>bench(“without pipelining”) {<br>    without_pipelining<br>}<br>bench(“with pipelining”) {<br>    with_pipelining<br>}<br>从处于局域网中的Mac OS X系统上执行上面这个简单脚本的数据表明，开启了管道操作后，往返时延已经被改善得相当低了：<br>without pipelining 1.185238 seconds<br>with pipelining 0.250783 seconds<br>如你所见，开启管道后，我们的速度效率提升了5倍。</p>
-<h2 id="管道（Pipelining）-VS-脚本（Scripting）"><a href="#管道（Pipelining）-VS-脚本（Scripting）" class="headerlink" title="管道（Pipelining） VS 脚本（Scripting）"></a>管道（Pipelining） VS 脚本（Scripting）</h2><p>大量 pipeline 应用场景可通过 Redis 脚本（Redis 版本 &gt;= 2.6）得到更高效的处理，后者在服务器端执行大量工作。脚本的一大优势是可通过最小的延迟读写数据，让读、计算、写等操作变得非常快（pipeline 在这种情况下不能使用，因为客户端在写命令前需要读命令返回的结果）。<br>应用程序有时可能在 pipeline 中发送 EVAL 或 EVALSHA 命令。Redis 通过 SCRIPT LOAD 命令（保证 EVALSHA 成功被调用）明确支持这种情况。</p>
+<hr>
+<h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><h3 id="rsync简介"><a href="#rsync简介" class="headerlink" title="rsync简介"></a>rsync简介</h3><a id="more"></a>
+<h3 id="rsync基础操作"><a href="#rsync基础操作" class="headerlink" title="rsync基础操作"></a>rsync基础操作</h3><h3 id="rsync服务端和客户端"><a href="#rsync服务端和客户端" class="headerlink" title="rsync服务端和客户端"></a>rsync服务端和客户端</h3><h3 id="rsync基于密码文件的同步（无密码输入）"><a href="#rsync基于密码文件的同步（无密码输入）" class="headerlink" title="rsync基于密码文件的同步（无密码输入）"></a>rsync基于密码文件的同步（无密码输入）</h3><h4 id="服务器配置文件"><a href="#服务器配置文件" class="headerlink" title="服务器配置文件"></a>服务器配置文件</h4><p>rsyncd.conf</p>
+<ul>
+<li>特别注意model命名:[modelname]</li>
+<li>如果客户端需要向服务器发送文件，则read only =no</li>
+<li>如果客户端需要同步服务器的文件，则write only = no</li>
+<li>注意同步安全，包括：同步文件目录的控制、访问主机过滤、访问用户名等<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#Global Settings  全局设置，描述信息 </div><div class="line">uid = nobody      运行rsync进程的用户</div><div class="line">gid = nobody      运行rsync进程的组</div><div class="line">use chroot = no   是否将用户禁锢在其家目录</div><div class="line">max connections = 5 数据同步时最大连接数</div><div class="line">strict modes = false 严格模式：建议设置为false，否则验证用户时容易出错</div><div class="line">pid file = /var/run/rsyncd.pid  进程文件目录</div><div class="line">log file = /var/log/rsyncd.log  日志文件目录</div><div class="line">[mydata]               共享目录名称</div><div class="line">path = /tmp            需要备份的文件存放位置</div><div class="line">ignore errors = yes    数据同步期间忽略I/O错误</div><div class="line">read only = no         只读，如果只读将无法上传数据</div><div class="line">write only = no        只写，如果只写将无法下载数据</div><div class="line">hosts allow = 172.16.0.0/16   允许的主机或者网段</div><div class="line">hosts deny = *                拒绝的主机或者网段</div><div class="line">list = false                  不列出文件</div><div class="line">uid = root                    运行进程的用户</div><div class="line">gid = root                    运行进程的组</div><div class="line">auth users = myuser           验证用户</div><div class="line">secrets file = /etc/rsync.secret  用户密码文件</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>密钥文件</p>
+<ul>
+<li>密钥文件的文件权限必须是600，只允许root进行读写</li>
+</ul>
+<p>rsync.secret<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">username:password</div></pre></td></tr></table></figure></p>
+<h4 id="客户端密码文件"><a href="#客户端密码文件" class="headerlink" title="客户端密码文件"></a>客户端密码文件</h4><p>密钥文件</p>
+<ul>
+<li>密钥文件的文件权限必须是600，只允许root进行读写</li>
+<li>必须和服务器端的用户对应的密码一致</li>
+</ul>
+<p>rsync.secret<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">password</div></pre></td></tr></table></figure></p>
+<h4 id="客户端发起同步操作"><a href="#客户端发起同步操作" class="headerlink" title="客户端发起同步操作"></a>客户端发起同步操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rsync -auvP --password-file=/etc/rsyncd.secret test root@139.224.47.34::a</div></pre></td></tr></table></figure>
+<p>在这里test为客户端需要同步的文件，a为服务器端设定的同步目录，整个命令将客户端文件上传至服务器别名为a的目录下</p>
 
       
     </div>
@@ -402,12 +398,6 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/loves/" rel="tag"># loves</a>
-          
-        </div>
-      
 
       
         
@@ -417,8 +407,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/23/redis-数据类型概览/" rel="next" title="redis 数据类型概览">
-                <i class="fa fa-chevron-left"></i> redis 数据类型概览
+              <a href="/2017/03/01/日志（Log）/" rel="next" title="日志（Log）">
+                <i class="fa fa-chevron-left"></i> 日志（Log）
               </a>
             
           </div>
@@ -427,8 +417,8 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/25/git-操作基础手册/" rel="prev" title="git 操作基础手册">
-                git 操作基础手册 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/25/git-命令详解/" rel="prev" title="git 命令详解">
+                git 命令详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +551,7 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-管道（Pipelining）"><span class="nav-number">1.</span> <span class="nav-text">Redis 管道（Pipelining）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道（Pipelining）-VS-脚本（Scripting）"><span class="nav-number">2.</span> <span class="nav-text">管道（Pipelining） VS 脚本（Scripting）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rsync"><span class="nav-number">1.</span> <span class="nav-text">rsync</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rsync简介"><span class="nav-number">1.1.</span> <span class="nav-text">rsync简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rsync基础操作"><span class="nav-number">1.2.</span> <span class="nav-text">rsync基础操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rsync服务端和客户端"><span class="nav-number">1.3.</span> <span class="nav-text">rsync服务端和客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rsync基于密码文件的同步（无密码输入）"><span class="nav-number">1.4.</span> <span class="nav-text">rsync基于密码文件的同步（无密码输入）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器配置文件"><span class="nav-number">1.4.1.</span> <span class="nav-text">服务器配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端密码文件"><span class="nav-number">1.4.2.</span> <span class="nav-text">客户端密码文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端发起同步操作"><span class="nav-number">1.4.3.</span> <span class="nav-text">客户端发起同步操作</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -686,9 +676,9 @@ Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服�
 
     <script type="text/javascript">
       var disqus_shortname = 'yeran';
-      var disqus_identifier = '2017/02/23/redis-请求响应（pipe）/';
+      var disqus_identifier = '2017/03/14/rsync-文件同步-（一）/';
 
-      var disqus_title = "redis 请求响应（pipe）";
+      var disqus_title = "rsync 文件同步 （一）";
 
 
       function run_disqus_script(disqus_script) {
