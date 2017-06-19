@@ -97,7 +97,9 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
 git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由L">
 <meta property="og:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_%E4%B8%BB%E5%88%86%E7%A4%BA%E6%84%8F.png">
 <meta property="og:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%93%E6%9E%84.png">
-<meta property="og:updated_time" content="2017-03-25T02:04:27.606Z">
+<meta property="og:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_add.png">
+<meta property="og:image" content="http://7xovkg.com1.z0.glb.clouddn.com/git_commit.png">
+<meta property="og:updated_time" content="2017-03-25T05:25:28.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 操作基础手册">
 <meta name="twitter:description" content="概览
@@ -200,7 +202,7 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -210,7 +212,7 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -300,7 +302,7 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-25T14:28:08+08:00">
                 2017-02-25
@@ -321,7 +323,7 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -410,6 +412,22 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
 <p>hooks </p>
 </blockquote>
 <p>钩子文件目录</p>
+<blockquote>
+<p>git add /git commit</p>
+</blockquote>
+<p>git add命令会做两件事情：<br>a.添加文件到暂存区(.git/objects)<br>b.添加文件索引到(.git/index)</p>
+<p>当git commit被成功执行后，会产生一系列对象表示该commit的结果，都存储在.git/objects目录下。主要分成三部分：<br>a.tree对象表示当前commit时候的暂存区的目录树，tree对象的内容来自于.git/index文件。<br>b.blob对象<br>tree对象目录树中的文件总是以blob的对象被保存。如果tree中有三个文件，那么就有对应的三个blob对象，它们都能通过tree对象保存的这些blob对象的摘要信息（id,文件名，类型等）找到<br>c.commit对象<br>该对象记录了属于哪个tree对象，上一次commit的对象id,自己的id,作者等等。</p>
+<p><img src="http://7xovkg.com1.z0.glb.clouddn.com/git_add.png" alt=""><br><img src="http://7xovkg.com1.z0.glb.clouddn.com/git_commit.png" alt=""></p>
+<h3 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h3><ul>
+<li><p>大版本回退</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git log （回到过去）</div><div class="line">git reflog (回到未来)</div><div class="line">git log	--pretty=oneline</div><div class="line">git reset --hard commit_id</div></pre></td></tr></table></figure>
+</li>
+<li><p>单文件回退<br>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -- file (git checkout其实是用版本库里的版本替换工作区的版本)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">第一步用命令</div><div class="line">	git reset HEAD file(git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区)，就回到了场景1，</div><div class="line">第二步按场景1操作。</div></pre></td></tr></table></figure></p>
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
 
       
     </div>
@@ -514,10 +532,10 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -537,8 +555,8 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -547,7 +565,7 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -556,7 +574,7 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -590,7 +608,7 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git概述"><span class="nav-number">1.</span> <span class="nav-text">git概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-来源"><span class="nav-number">1.1.</span> <span class="nav-text">git 来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集中式与分布式"><span class="nav-number">1.2.</span> <span class="nav-text">集中式与分布式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-优势"><span class="nav-number">1.3.</span> <span class="nav-text">git 优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-仓库"><span class="nav-number">2.</span> <span class="nav-text">git 仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-常用命令"><span class="nav-number">3.</span> <span class="nav-text">git 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库初始化"><span class="nav-number">3.1.</span> <span class="nav-text">仓库初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-仓库管理结构"><span class="nav-number">3.2.</span> <span class="nav-text">git 仓库管理结构</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git概述"><span class="nav-number">1.</span> <span class="nav-text">git概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-来源"><span class="nav-number">1.1.</span> <span class="nav-text">git 来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集中式与分布式"><span class="nav-number">1.2.</span> <span class="nav-text">集中式与分布式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-优势"><span class="nav-number">1.3.</span> <span class="nav-text">git 优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-仓库"><span class="nav-number">2.</span> <span class="nav-text">git 仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-常用命令"><span class="nav-number">3.</span> <span class="nav-text">git 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库初始化"><span class="nav-number">3.1.</span> <span class="nav-text">仓库初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-仓库管理结构"><span class="nav-number">3.2.</span> <span class="nav-text">git 仓库管理结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本管理"><span class="nav-number">3.3.</span> <span class="nav-text">版本管理</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -620,7 +638,7 @@ git概述git 来源很多人都知道，Linus在1991年创建了开源的Linux�
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

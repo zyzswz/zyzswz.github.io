@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/01/日志（Log）/index.html">
 <meta property="og:site_name" content="yeran blog">
 <meta property="og:description" content="日志是什么？日志即记录，默认不可篡改的对曾经事件的记载。通常意义上的日志对记录形式不做任何，对记录内容也无规范，可以是几笔素绘，也可以是一段文字，当然也可能是一片枯黄的落叶。在常规概念下，任何事情的发生都是有时间标记的，即使我们在记录日志的时候没有作上特殊时间的记录，大自然规则却为它默认附属了历史的印记，虽然我们没有意识到。为了让我们在长远的时间之后依然能够将之前的日志连成一条线，我们需要可以得刻">
-<meta property="og:updated_time" content="2017-03-01T14:34:07.026Z">
+<meta property="og:updated_time" content="2017-04-18T03:08:38.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日志（Log）">
 <meta name="twitter:description" content="日志是什么？日志即记录，默认不可篡改的对曾经事件的记载。通常意义上的日志对记录形式不做任何，对记录内容也无规范，可以是几笔素绘，也可以是一段文字，当然也可能是一片枯黄的落叶。在常规概念下，任何事情的发生都是有时间标记的，即使我们在记录日志的时候没有作上特殊时间的记录，大自然规则却为它默认附属了历史的印记，虽然我们没有意识到。为了让我们在长远的时间之后依然能够将之前的日志连成一条线，我们需要可以得刻">
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -294,7 +294,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T21:13:31+08:00">
                 2017-03-01
@@ -315,7 +315,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -397,6 +397,11 @@
 <blockquote>
 <p>上表 content 中的 key 不可以使用如下关键字：_time_、_source_、_topic_、 _partition_time_ 、_extract_others_、_extract_others_。</p>
 </blockquote>
+<p>3、日志<br>1） 日志的格式要确定，在现有的格式基础上，增加ip，访问用户等信息<br>2） 对错误日志的格式要明确，包括错误位置、错误类别、错误标识（针对应用）、是否被处理、错误等级<br>    系统级别的错误<br>    应用级别的错误    PHP错误、SQL执行错误</p>
+<p>3） 将db日志、错误日志、信息日志、debug日志进行分离<br>    根据调试需求，需要提供临时增加文件输出的能力</p>
+<pre><code>提供信息关联标识，可以通过标识确立一组相关的日志输入，方便进行过滤导出
+</code></pre><p>4） 报警日志<br>    针对一系列需要报警的情况，形成报警策略，是通过日志来进行判断还是直接跟随业务<br>    建立专门的报警服务，包括短信、微信消息两个渠道</p>
+<p>5） </p>
 
       
     </div>
@@ -501,10 +506,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -524,8 +529,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -534,7 +539,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -543,7 +548,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -607,7 +612,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
